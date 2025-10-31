@@ -8,7 +8,7 @@ from io import BytesIO
 import json
 
 app = Flask(__name__)
-app.secret_key = 'shadow-whisper-haunted-chat-666'
+app.secret_key = os.environ.get('SECRET_KEY', 'shadow-whisper-haunted-chat-666')
 
 # --- FREE APIs - No Keys Needed! ---
 MLVOCA_URL = "https://mlvoca.com/api/generate"
@@ -538,7 +538,16 @@ def test():
         'message': 'Fully powered by FREE technologies! 🎃'
     })
 
-
 if __name__ == '__main__':
+    # Get port from environment variable (for production) or use 5000 for local
     port = int(os.environ.get('PORT', 5000))
+    
+    print("🎃" * 50)
+    print("🎃 SHADOW WHISPER HAUNTED CHAT - PRODUCTION READY!")
+    print("🎃 AI: FREE MLVOCA DeepSeek 1.5B")
+    print("🎃 TTS: FREE Google Text-to-Speech") 
+    print(f"🎃 Running on port: {port}")
+    print("🎃" * 50)
+    
+    # Run in production mode (debug=False)
     app.run(host='0.0.0.0', port=port, debug=False)
