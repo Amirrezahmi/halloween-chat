@@ -50,3 +50,4 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+4. **Visit the experience** → http://127.0.0.1:5000
