@@ -40,3 +40,9 @@ Welcome to **SHADOW WHISPER**, where reality bends and shadows speak! This haunt
 ```bash
 git clone https://github.com/your-username/shadow-whisper.git
 cd shadow-whisper
+```
+
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
