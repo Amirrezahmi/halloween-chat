@@ -46,3 +46,7 @@ cd shadow-whisper
 ```bash
 pip install -r requirements.txt
 ```
+3. **Launch the application**
+```bash
+python app.py
+```
