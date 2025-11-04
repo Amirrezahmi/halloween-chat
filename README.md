@@ -80,3 +80,17 @@ payload = {
     "prompt": "You are a haunted AI spirit..."
 }
 ```
+**FREE Text-to-Speech - Google TTS**
+```python
+# Converts text to atmospheric voice
+tts = gTTS(text=scary_message, lang='en')
+```
+
+**🎭 Usage Examples**
+```bash
+// Ask questions like:
+- "What awaits me tonight?"
+- "Tell me a Halloween story"
+- "Who's watching me?"
+- "What's my fate?"
+```
