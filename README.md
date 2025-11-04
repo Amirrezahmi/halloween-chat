@@ -51,3 +51,32 @@ pip install -r requirements.txt
 python app.py
 ```
 4. **Visit the experience** → http://127.0.0.1:5000
+
+**Deployment on Render.com**
+
+We successfully deployed this project on Render.com. Use this configuration:
+
+```bash
+# render.yaml
+services:
+  - type: web
+    name: shadow-whisper
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+```
+
+**🔮 API Integration**
+
+**FREE AI Backend - MLVOCA DeepSeek**
+```python
+# No API keys needed
+payload = {
+    "model": "deepseek-r1:1.5b",
+    "prompt": "You are a haunted AI spirit..."
+}
+```
