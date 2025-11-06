@@ -94,3 +94,13 @@ tts = gTTS(text=scary_message, lang='en')
 - "Who's watching me?"
 - "What's my fate?"
 ```
+
+## ✨ Features
+
+- **👻 Haunted AI Chat**: Converse with SHADOW WHISPER, an entity from beyond
+- **🔊 Voice of the Damned**: Text-to-speech with FREE Google TTS
+- **📍 Location-Based Terror**: Automatic city detection with personalized scary predictions
+- **🎨 Dark Halloween UI**: Animated ghosts, bats, and floating text elements
+- **⚡ 100% FREE**: No API costs, no subscriptions, completely open source
+- **🌍 Cross-Platform**: Works on all devices and dimensions
+
