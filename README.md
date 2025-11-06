@@ -95,12 +95,22 @@ tts = gTTS(text=scary_message, lang='en')
 - "What's my fate?"
 ```
 
-## ✨ Features
+⚡ Features
 
-- **👻 Haunted AI Chat**: Converse with SHADOW WHISPER, an entity from beyond
-- **🔊 Voice of the Damned**: Text-to-speech with FREE Google TTS
-- **📍 Location-Based Terror**: Automatic city detection with personalized scary predictions
-- **🎨 Dark Halloween UI**: Animated ghosts, bats, and floating text elements
-- **⚡ 100% FREE**: No API costs, no subscriptions, completely open source
-- **🌍 Cross-Platform**: Works on all devices and dimensions
+Dynamic Name System
 
+· Randomly assigns atmospheric names: "Lost Soul", "Doomed Wanderer", "Cursed One"
+· Personalized experience for each visitor
+
+Location-Based Predictions
+
+· Automatically detects user's city
+· Generates customized scary predictions
+· Uses Markov chains for unique responses
+
+Animated Atmosphere
+
+· Floating ghosts and bats
+· Atmospheric sound effects
+· Glowing text animations
+· Crystal ball predictions
