@@ -128,3 +128,5 @@ Customization
 · Modify VICTIM_NAMES in app.py for new identities
 · Add more predictions in generate_scary_prediction()
 · Customize CSS in static/style.css for different themes
+
+Remember: The shadows are always watching! 🎃👻💀
