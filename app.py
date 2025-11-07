@@ -22,17 +22,93 @@ VICTIM_NAMES = [
 
 # --- Location functions ---
 def get_user_location():
-    try:
-        response = requests.get('https://ipapi.co/json/', timeout=5)
-        data = response.json()
-        return {
-            'city': data.get('city', 'Unknown City'),
-            'country': data.get('country_name', 'Unknown Land')
+    """Get user location with multiple fallback services"""
+    services = [
+        {
+            'url': 'https://ipapi.co/json/',
+            'city_field': 'city',
+            'country_field': 'country_name'
+        },
+        {
+            'url': 'https://ipinfo.io/json',
+            'city_field': 'city', 
+            'country_field': 'country'
+        },
+        {
+            'url': 'https://api.ip.sb/geoip',
+            'city_field': 'city',
+            'country_field': 'country'
+        },
+        {
+            'url': 'http://ip-api.com/json/',
+            'city_field': 'city',
+            'country_field': 'country'
         }
-    except:
-        return {'city': 'Silent Hill', 'country': 'Nightmare Realm'}
+    ]
+    
+    for service in services:
+        try:
+            print(f"🔍 Trying location service: {service['url']}")
+            response = requests.get(service['url'], timeout=5)
+            
+            if response.status_code == 200:
+                data = response.json()
+                city = data.get(service['city_field'], 'Unknown City')
+                country = data.get(service['country_field'], 'Unknown Land')
+                
+                # Validate that we got real data
+                if city and city != 'Unknown City' and country and country != 'Unknown Land':
+                    print(f"📍 Location found: {city}, {country}")
+                    return {
+                        'city': city,
+                        'country': country,
+                        'service': service['url']
+                    }
+                    
+        except Exception as e:
+            print(f"⚠️ Location service failed {service['url']}: {e}")
+            continue
+    
+    # If all services fail, return a random scary city
+    scary_cities = [
+        {'city': 'Silent Hill', 'country': 'Nightmare Realm'},
+        {'city': 'Ravenholm', 'country': 'We Don\'t Go There'},
+        {'city': 'Raccoon City', 'country': 'Umbrella Corporation'},
+        {'city': 'Arkham', 'country': 'Massachusetts'},
+        {'city': 'Innsmouth', 'country': 'Lovecraft Country'},
+        {'city': 'Castle Rock', 'country': 'Maine'},
+        {'city': 'Derry', 'country': 'Maine'},
+        {'city': 'Haddonfield', 'country': 'Illinois'},
+        {'city': 'Amityville', 'country': 'New York'},
+        {'city': 'Sleepy Hollow', 'country': 'New York'}
+    ]
+    
+    fallback = random.choice(scary_cities)
+    print(f"🎃 Using fallback location: {fallback['city']}")
+    return fallback
 
 def generate_scary_prediction(city):
+    """Generate scary prediction based on city with more variety"""
+    
+    # Special predictions for famous horror cities
+    special_predictions = {
+        'Silent Hill': "The fog is coming... and it brings the sirens. Don't look at the shadows.",
+        'Ravenholm': "We don't go there anymore. The headcrabs have taken over completely.",
+        'Raccoon City': "The T-virus has spread. Lock your doors and pray for daylight.",
+        'Arkham': "The asylum is open tonight. Can you hear the laughter in the wind?",
+        'Innsmouth': "The fish-people walk among us. Don't trust anyone with wide, unblinking eyes.",
+        'Castle Rock': "Sometimes dead is better. The ground is sour here.",
+        'Derry': "They all float down here. You'll float too!",
+        'Haddonfield': "The Shape is watching from the hedge. Don't be a babysitter tonight.",
+        'Amityville': "Get out! The house is alive and it hates visitors.",
+        'Sleepy Hollow': "The Horseman rides tonight. Keep your head down, literally."
+    }
+    
+    # Return special prediction for known horror cities
+    if city in special_predictions:
+        return special_predictions[city]
+    
+    # Generic predictions for other cities
     predictions = [
         f"The shadows in {city} whisper your name... don't answer.",
         f"Beware the October moon in {city}, it reveals hidden horrors.",
@@ -43,7 +119,12 @@ def generate_scary_prediction(city):
         f"When the clock strikes thirteen in {city}, count the faces in the mirror.",
         f"The river through {city} carries more than water after dark.",
         f"Residents of {city} lock their doors extra tight tonight, and for good reason.",
-        f"The legend says that every Halloween, one soul from {city} vanishes forever."
+        f"The legend says that every Halloween, one soul from {city} vanishes forever.",
+        f"In {city}, the streetlights flicker when something passes between them.",
+        f"The crows in {city} don't just watch... they report back.",
+        f"Every reflection in {city} shows one extra person behind you.",
+        f"The subway tunnels under {city} go much deeper than they should.",
+        f"People in {city} avoid eye contact with their own shadows."
     ]
     return random.choice(predictions)
 
