@@ -130,3 +130,7 @@ Customization
 · Customize CSS in static/style.css for different themes
 
 Remember: The shadows are always watching! 🎃👻💀
+
+**Questions?**
+
+Ask me questions at @amirrezahmi2002@gmail.com.
